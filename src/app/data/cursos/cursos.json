@@ -1,0 +1,19 @@
+{
+	"status": 200,
+	"cursos": [
+		{
+			"id": 1,
+			"nome": "Técnico em Informática",
+			"descricao": "Este curso é legal",
+			"carga_horaria": "235",
+			"duracao": "36"
+		},
+		{
+			"id": 1,
+			"nome": "Técnico em Hospedagem",
+			"descricao": "Este curso é legal",
+			"carga_horaria": "55",
+			"duracao": "8"
+		}
+	]
+}

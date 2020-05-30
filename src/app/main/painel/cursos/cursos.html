@@ -1,0 +1,105 @@
+<div id="cursos" class="modelo-pagina-lista modelo-aluno modelo-cursos md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Cursos</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Cursos</h1>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input ng-model="barraPesquisa" type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="vm.botaoCriarCurso($event)"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar curso</span>
+				<md-tooltip hide-gt-xs>Cadastrar curso</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+
+	<ul id="lista">
+		<div id="sem-resultados" ng-if="CursosData.length == 0">
+			<p>Não existem cursos cadastrados no momento.</p>
+			<p ng-click="vm.botaoCriarCurso()">Cadastre uma para ver aqui!</p>
+		</div>
+		<li 
+			ng-repeat="(key, value) in CursosData | filter: {nome: barraPesquisa}">
+			
+			<div layout="row" layout-align="start center">
+
+				<div layout="row" ng-click="vm.visualizarCurso($event, key, value.id)" style="width: 100%">
+					
+					<div 
+
+						layout="column"
+						class="informacoes table">
+						
+						<p class="m-0 text-bold table-title">Curso</p>
+						<p class="nome-curso m-0 pr-10">{{value.nome}}</p>
+					</div>
+
+					<div 
+						layout="row" 
+						class=" detalhes"
+						style="width: calc(100% - 40%);">
+
+						<div 
+							layout="column"
+							class="text-truncate table"
+							style="max-width: calc(100% / 3);width: calc(100% / 3);">
+							
+							<p class="m-0 text-bold table-title">Carga horária</p>
+							<p class="carga-horaria m-0 text-truncate">{{value.carga_horaria}} horas</p>
+						</div>
+
+						<div
+							layout="column"
+							class="ml-60 table">
+							<p class="m-0 text-bold table-title">
+								Duração
+							</p>	
+							<p class="m-0">
+								{{value.duracao}} meses
+							</p>	
+						</div>
+					</div>
+				</div>
+				<div 
+					layout="row"
+					class="acao-pessoa acao-cursos">
+					
+					<md-button 
+						ng-hide="exibirDetalhesCurso"
+						ng-click="vm.botaoEditar($event, key, value.id)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar curso</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesCurso"
+						ng-click="vm.botaoExcluir($event, key, value.id)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir curso</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,97 @@
+<div id="parentes" class="modelo-pagina-lista modelo-aluno md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Parentes</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Parentes</h1>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="vm.botaoCriarParente()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">person_add</md-icon>
+				<span class="ml-10">Cadastrar parente</span>
+				<md-tooltip hide-gt-xs>Cadastrar parente</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<li 
+			ng-repeat="(key, value) in [0,1,2,3,4,5,6,7,8,9,10]">
+			
+			<div layout="row" layout-align="start center">
+			
+				<div class="foto-pessoa">
+					<img class="avatar" src="assets/images/avatars/carl.jpg">
+				</div>
+
+				<div 
+					layout="column"
+					class="informacoes text-truncate">
+					
+					<p class="nome-pessoa m-0 ml-10 text-bold">Lucas Garcia</p>
+					<p class="m-0 ml-10 text-truncate">lucasgarcia@gmail.com</p>
+				</div>
+
+				<div
+					layout="column"
+					class="ml-40 detalhes {{exibirDetalhesDoParente ? 'show' : ''}}">
+					<p class="m-0">
+						<b>Aluno: </b>
+						Higor Pires Oliveira
+					</p>	
+					<p class="m-0">
+						<b>Parentesco: </b>
+						Pai
+					</p>
+				</div>
+
+				<div 
+					layout="row"
+					class="acao-pessoa acao-parente">
+					
+					<md-button 
+						id="exibir-detalhes"
+						ng-click="exibirDetalhesDoParente = !exibirDetalhesDoParente"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">{{exibirDetalhesDoParente ? 'close' : 'library_books'}}</md-icon>
+						<md-tooltip>{{exibirDetalhesDoParente ? 'Fechar' : 'Exibir'}} detalhes do parente</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesDoParente"
+						ng-click="vm.botaoEditar(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar pessoa</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesDoParente"
+						ng-click="vm.botaoExcluir(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir pessoa</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

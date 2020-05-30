@@ -1,0 +1,105 @@
+<div id="disciplinas" class="modelo-pagina-lista modelo-aluno modelo-disciplinas md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Disciplinas</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Disciplinas</h1>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="vm.botaoCriarDisciplina()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar disciplina</span>
+				<md-tooltip hide-gt-xs>Cadastrar disciplina</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<li 
+			ng-repeat="(key, value) in [0,1,2,3,4,5,6,7,8,9,10]">
+			
+			<div layout="row" layout-align="start center">
+
+				<div 
+					layout="column"
+					class="informacoes table text-truncate">
+					
+					<p class="m-0 text-bold table-title">Disciplina</p>
+					<p class="nome-disciplina m-0 text-truncate">Engenharia de Software aplicada a Informática</p>
+				</div>
+
+				<div 
+					layout="row" 
+					class=" detalhes {{exibirDetalhesDisciplina ? 'show' : ''}}"
+					style="width: calc(100% - 40%);">
+
+					<div 
+						layout="column"
+						class="text-truncate ml-30 table"
+						style="max-width: calc(100% / 3);width: calc(100% / 3);">
+						
+						<p class="m-0 text-bold table-title">Professor</p>
+						<p class="nome-pessoa m-0 text-truncate">Lucas Garcia</p>
+					</div>
+
+					<div
+						layout="column"
+						class="ml-60 table">
+						<p class="m-0 text-bold table-title">
+							Turma
+						</p>	
+						<p class="m-0">
+							2º B <sup>2017</sup>
+						</p>	
+					</div>
+				</div>
+				<div 
+					layout="row"
+					class="acao-pessoa acao-disciplina">
+					
+					<md-button 
+						id="exibir-detalhes"
+						ng-click="exibirDetalhesDisciplina = !exibirDetalhesDisciplina"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">{{exibirDetalhesDisciplina ? 'close' : 'library_books'}}</md-icon>
+						<md-tooltip>{{exibirDetalhesDisciplina ? 'Fechar' : 'Exibir'}} detalhes da disciplina</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesDisciplina"
+						ng-click="vm.botaoEditar(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar disciplina</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesDisciplina"
+						ng-click="vm.botaoExcluir(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir disciplina</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

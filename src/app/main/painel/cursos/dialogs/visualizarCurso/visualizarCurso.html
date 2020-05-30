@@ -1,0 +1,65 @@
+<md-dialog id="visualizarCursoDialog" aria-label="Cadastrar curso">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 style="max-width: 600px" class="text-truncate">{{CursoData.nome}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="visuCurso.cancel()">
+                    <md-icon md-font-set="material-icons" aria-label="Fechar">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <md-input-container title="Nome do curso." md-no-float="label" class="md-block">
+                <label class="primary-fg">Nome do curso</label>
+                <textarea placeholder="" ng-init="nome = CursoData.nome" ng-model="nome" md-no-resize disabled></textarea>
+                <md-tooltip hide-gt-xs>Nome do curso.</md-tooltip>
+            </md-input-container>
+            <md-input-container md-no-float="label" title="Descrição do curso." class="md-block">
+                <label>Descrição</label>
+                <textarea rows="3" placeholder="" ng-init="descricao = CursoData.descricao" ng-model="descricao" md-no-resize disabled></textarea>
+                <md-tooltip hide-gt-xs>Descrição do curso</md-tooltip>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container flex md-no-float="label" title="Duração em horas do curso." class="md-block mr-5">
+                    <label>Carga horária</label>
+                    <input type="text" placeholder="" ng-init="carga_horaria = CursoData.carga_horaria + ' horas'" ng-model="carga_horaria" disabled>
+                    <md-tooltip hide-gt-xs>Duração em horas do curso</md-tooltip>
+                </md-input-container>
+                <md-input-container flex md-no-float="label" title="Duração em meses do curso." class="md-block ml-5">
+                    <label>Duração</label>
+                    <input type="text" placeholder="" ng-init="duracao = CursoData.duracao + ' meses'" ng-model="duracao" disabled>
+                    <md-tooltip hide-gt-xs>Duração em meses do curso</md-tooltip>
+                </md-input-container>
+            </div>
+            <div layout="row">
+                <md-input-container md-no-float="label" title="Disciplinas cadastradas no curso." class="md-block mr-5">
+                    <label>Disciplinas cadastradas</label>
+                    <input type="text" placeholder="" ng-init="discilinas = CursoInfo.qtd_num_disciplinas" ng-model="discilinas" disabled>
+                    <md-tooltip hide-gt-xs>Disciplinas cadastradas no curso</md-tooltip>
+                </md-input-container>
+                <md-input-container md-no-float="label" title="Turmas do curso." class="md-block ml-5 mr-5">
+                    <label>Turmas cadastradas</label>
+                    <input type="text" placeholder="" ng-init="turmasDoCurso = CursoInfo.qtd_num_turmas_curso" ng-model="turmasDoCurso" disabled>
+                    <md-tooltip hide-gt-xs>Turmas do curso</md-tooltip>
+                </md-input-container>
+                <md-input-container md-no-float="label" title="Alunos matrículados no curso." class="md-block ml-5">
+                    <label>Alunos matrículados</label>
+                    <input type="text" placeholder="" ng-init="alunosNoCurso = CursoInfo.qtd_num_alunos_curso" ng-model="alunosNoCurso" disabled>
+                    <md-tooltip hide-gt-xs>Alunos matrículados no curso</md-tooltip>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <md-button type="submit" ng-click="visuCurso.visualizarTurmas(CursoData.id)">
+                Visualizar turmas
+            </md-button>
+            <span flex></span>
+            <md-button ng-click="visuCurso.cancel()">
+                Cancelar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

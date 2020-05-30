@@ -1,0 +1,44 @@
+<md-dialog id="cadastrarCursoDialog" aria-label="Cadastrar curso">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cadastrar curso</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cadCurso.cancel()">
+                    <md-icon md-font-set="material-icons" aria-label="Fechar">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <md-input-container title="Nome do curso." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Nome do curso</label>
+                <input type="text" placeholder="" ng-model="nome" required>
+            </md-input-container>
+            <md-input-container md-no-float="label" title="Descrição do curso (opcional)." class="md-block">
+                <label>Descrição</label>
+                <textarea rows="3" placeholder="" ng-model="descricao" md-no-resize></textarea>
+            </md-input-container>
+            <div layout="row">
+                <md-input-container md-no-float="label" title="Duração em horas do curso." class="md-block mr-5">
+                    <label>Carga horária</label>
+                    <input type="number" placeholder="" ng-model="carga_horaria" required>
+                </md-input-container>
+                <md-input-container md-no-float="label" title="Duração em meses do curso." class="md-block ml-5">
+                    <label>Duração</label>
+                    <input type="number" placeholder="" ng-model="duracao" required>
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cadCurso.cancel()">
+                Cancelar
+            </md-button>
+            <md-button type="submit" ng-click="cadCurso.cadastrarCurso(nome, descricao, carga_horaria, duracao)">
+                Cadastrar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

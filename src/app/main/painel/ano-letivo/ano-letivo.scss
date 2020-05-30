@@ -1,0 +1,31 @@
+.modelo-ano-letivo {
+	ul#lista:not(.lista-semestres) {
+		li {
+			.informacoes {
+				width: auto !important;
+				max-width: inherit !important;
+				margin-right: 50px;
+			}
+		}
+	}
+	ul#lista.lista-semestres {
+		.informacoes, .table {
+		    max-width: calc(100% / 4) !important;
+		    width: calc(100% / 4) !important;
+		}
+
+		.detalhes.show {
+			margin-left: 0px !important;
+			.table {
+				margin-right: 10px;
+			}
+		}
+	}
+	.acao-ano-letivo {
+		margin-left: auto;
+	}
+
+	.hide {
+		display: none;
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"status": 200,
+	"alunos": [
+		{"id": 0, "nome": "Higor Pires Oliveira"},
+		{"id": 1, "nome": "Higor Goulart"}
+	]
+}

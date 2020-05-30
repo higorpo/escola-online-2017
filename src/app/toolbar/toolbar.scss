@@ -1,0 +1,224 @@
+#toolbar {
+    height: $toolbarHeight;
+    min-height: $toolbarHeight;
+    max-height: $toolbarHeight;
+    z-index: 55 !important;
+    box-shadow: 7px 1px 17px rgba(0,0,0,0.2);
+
+    #navigation-toggle {
+        width: $toolbarHeight;
+        min-width: $toolbarHeight;
+        height: $toolbarHeight;
+        margin: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 0;
+    }
+
+    #logo {
+        cursor: pointer;
+        background-image: url("../assets/images/logos/logo-mais-pequeno.png");
+        width: 130px;
+        height: 40px;
+        min-width: 130px;
+        min-height: 40px;
+        padding: 0px 15px;
+        border-right: 1px solid rgba(0, 0, 0, 0.12);
+        background-repeat: no-repeat; 
+        background-position: center; 
+    }
+
+    #search {
+        padding: 12px 17px;
+        background-color: #eee;
+        margin-right: 10px;
+
+        md-icon {
+            color: #878787;
+
+            &.closeInput {
+                display: none;
+            }
+        }
+
+        input {
+            border: none;
+            font-size: 17px;
+            margin-left: 10px;
+            width: 160px;
+            background-color: transparent;      
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    #notifications {
+        margin-right: 20px;
+
+        md-menu-bar {
+            padding: 0px;
+        }
+
+        .has_notification {
+             position: absolute;
+            padding: 2px 10px;
+            border-radius: 10px;
+            background-color: #cb1d1d;
+            color: white;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 13px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+                top: -4px;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid #cb1d1d;
+                left: 50%;
+                transform: translateX(-50%); 
+            }
+
+            p {
+                margin: 0px;
+            }
+        }
+
+    }
+
+    #user-menu {
+        height: $toolbarHeight;
+        padding: 0;
+
+        md-menu-item .md-button {
+            font-size: 15px;
+
+            md-icon {
+                margin: auto 16px auto 0;
+            }
+        }
+
+        .user-button {
+            margin: 0;
+            padding: 0 16px;
+            height: $toolbarHeight;
+            text-transform: none;
+
+            .avatar-wrapper {
+                position: relative;
+
+                .status {
+                    position: absolute;
+                    bottom: -3px;
+                    right: 5px;
+                }
+            }
+
+            .username {
+                margin: 0 12px 0 8px;
+                line-height: 1;
+                font-family: 'Dosis', sans-serif;
+                font-weight: 600;
+                color: #575757;
+                font-size: 16px;            
+            }
+
+            .category {
+                margin: 3px 12px 0 8px;
+                line-height: 1;
+                text-align: left;
+                font-family: 'Dosis', sans-serif;
+                font-weight: 400;
+                color: #646464;
+                font-size: 12px;
+            }
+        }
+    }
+
+    .toolbar-separator {
+        height: $toolbarHeight / 1.5;
+        width: 1px;
+        border-right: 2px dotted #eee;
+    }
+}
+
+// RESPONSIVE
+@media screen and (max-width: $layout-breakpoint-xs) {
+
+    #toolbar {
+
+        #user-menu {
+
+            .user-button {
+                min-width: 64px;
+                padding: 0 2px 0 10px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 740px) {
+    #toolbar {
+        .school-name {
+            display: none;  
+        }
+    }
+}
+
+@media screen and (max-width: 670px) {
+    #toolbar {
+        #search {
+            padding: 0px;
+            background-color: transparent;
+
+            md-icon {
+                cursor: pointer;
+                
+                &.closeInput {
+                    margin-left: auto !important;
+                    display: inherit;
+                }
+            }
+
+            input {
+                display: none;
+            }
+
+            &.showInput {
+                padding: 0 20px;
+                position: absolute;
+                width: 100%;
+                left: 0px;
+                z-index: 999;
+                height: 100%;
+                background-color: white;
+
+                md-icon {
+                    margin: 0px
+                }
+
+                input {
+                    display: inherit;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 435px) {
+    #toolbar {
+        #logo {
+            cursor: pointer;
+            background-image: url("../assets/images/logos/icone.png");
+            width: 60px;
+            min-width: 60px;
+        }
+    }
+} 

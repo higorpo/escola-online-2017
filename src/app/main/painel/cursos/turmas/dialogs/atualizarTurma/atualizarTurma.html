@@ -1,0 +1,125 @@
+<md-dialog id="atualizarCursoTurmaDialog" aria-label="Atualizar curso">
+    <form name="atualizarTurmaForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Atualizar turma</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="attTurma.cancel()">
+                    <md-icon md-font-set="material-icons" aria-label="Fechar">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <md-input-container title="Nome da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Nome da turma</label>
+                <input type="text" placeholder="" ng-model="nome" ng-init="nome = TurmaData.nome" required>
+            </md-input-container>
+            <md-input-container title="Ano letivo." md-no-float="label" class="md-block">
+                <label class="primary-fg">Ano letivo</label>
+                <md-select ng-model="ano_letivo" ng-init="ano_letivo = TurmaData.ano_letivo.id" required>
+                    <md-option ng-value="null"><em>Selecionar...</em></md-option>                
+                    <md-option ng-repeat="(key, value) in attTurma.anosLetivos" ng-value="{{value.id}}">{{value.ano}}</md-option>                
+                </md-select>
+            </md-input-container>
+            <md-input-container title="Turno do curso." md-no-float="label" class="md-block" style="margin-top: calc(18px * 2);">
+                <label class="primary-fg">Turno</label>
+                <md-select ng-model="turno" ng-init="turno = TurmaData.turno" required>
+                    <md-option ng-value="null"><em>Selecionar...</em></md-option>                
+                    <md-option ng-value="0">Manhã</md-option>                
+                    <md-option ng-value="1">Tarde</md-option>                
+                    <md-option ng-value="2">Noite</md-option>                
+                    <md-option ng-value="3">Integral</md-option>                
+                </md-select>
+            </md-input-container>
+
+            <md-autocomplete class="md-block" md-no-float="label"
+                title="Líder da turma."
+                ng-init="attTurma.liderSelecionado = (TurmaData.lider.nome_completo != null ? TurmaData.lider : null)"
+                md-input-name="autocompleteLider"
+                md-input-minlength="2"
+                md-no-cache="false"
+                md-selected-item="attTurma.liderSelecionado"
+                md-search-text="attTurma.searchLider"
+                md-items="lider in attTurma.queryAlunosSearch(attTurma.searchLider)"
+                md-item-text="lider.nome_completo"
+                md-require-match
+                md-floating-label="Líder da turma">
+                <md-item-template>
+                    <div layout="row" layout-align="start center">
+                        <div class="foto-pessoa" style="width: 30px; height: 30px;margin-right: 10px;">
+                            <img class="avatar" src="assets/images/avatars/profile.jpg" style="min-width: 30px;min-height: 30px;width: 30px;height: 30px;"">
+                        </div>
+                        <span md-highlight-text="attTurma.searchLider">{{lider.nome_completo}}</span>
+                    </div>
+                </md-item-template>
+                <div ng-messages="atualizarTurmaForm.autocompleteLider.$error" ng-if="atualizarTurmaForm.autocompleteLider.$touched">
+                    <div ng-message="md-require-match">Por favor, selecione um aluno existente.</div>
+                    <div ng-message="minlength">Nome do aluno é muito curto!</div>
+                </div>
+            </md-autocomplete>
+
+            <md-autocomplete class="md-block" md-no-float="label" style="margin-top: -25px"
+                title="Vice-líder da turma."
+                ng-init="attTurma.viceliderSelecionado = (TurmaData.vice_lider.nome_completo != null ? TurmaData.vice_lider : null)"
+                md-input-name="autocompleteVicelider"
+                md-input-minlength="2"
+                md-no-cache="false"
+                md-selected-item="attTurma.viceliderSelecionado"
+                md-search-text="attTurma.searchvicelider"
+                md-items="vicelider in attTurma.queryAlunosSearch(attTurma.searchvicelider)"
+                md-item-text="vicelider.nome_completo"
+                md-require-match
+                md-floating-label="Vice-líder da turma">
+                <md-item-template>
+                    <div layout="row" layout-align="start center">
+                        <div class="foto-pessoa" style="width: 30px; height: 30px;margin-right: 10px;">
+                            <img class="avatar" src="assets/images/avatars/profile.jpg" style="min-width: 30px;min-height: 30px;width: 30px;height: 30px;"">
+                        </div>
+                        <span md-highlight-text="attTurma.searchvicelider">{{vicelider.nome_completo}}</span>
+                    </div>
+                </md-item-template>
+                <div ng-messages="atualizarTurmaForm.autocompleteVicelider.$error" ng-if="atualizarTurmaForm.autocompleteVicelider.$touched">
+                    <div ng-message="md-require-match">Por favor, selecione um aluno existente.</div>
+                    <div ng-message="minlength">Nome do aluno é muito curto!</div>
+                </div>
+            </md-autocomplete>
+
+            <md-autocomplete class="md-block" md-no-float="label"  style="margin-top: -25px"
+                title="Regente da turma."
+                ng-init="attTurma.regenteSelecionado = (TurmaData.regente.nome_completo != null ? TurmaData.regente : null)"
+                md-input-name="autocompleteRegente"
+                md-input-minlength="2"
+                md-no-cache="false"
+                md-selected-item="attTurma.regenteSelecionado"
+                md-search-text="attTurma.searchRegente"
+                md-items="regente in attTurma.queryProfessoresSearch(attTurma.searchRegente)"
+                md-item-text="regente.nome_completo"
+                md-require-match
+                md-floating-label="Regente da turma">
+                <md-item-template>
+                    <div layout="row" layout-align="start center">
+                        <div class="foto-pessoa" style="width: 30px; height: 30px;margin-right: 10px;">
+                            <img class="avatar" src="assets/images/avatars/profile.jpg" style="min-width: 30px;min-height: 30px;width: 30px;height: 30px;"">
+                        </div>
+                        <span md-highlight-text="attTurma.searchLider">{{regente.nome_completo}}</span>
+                    </div>
+                </md-item-template>
+                <div ng-messages="atualizarTurmaForm.autocompleteRegente.$error" ng-if="atualizarTurmaForm.autocompleteRegente.$touched">
+                    <div ng-message="md-require-match">Por favor, selecione um professor existente.</div>
+                    <div ng-message="minlength">Nome do professor é muito curto!</div>
+                </div>
+            </md-autocomplete>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="attTurma.cancel()">
+                Cancelar
+            </md-button>
+            <md-button type="submit" ng-click="attTurma.atualizarTurma(nome, ano_letivo, attTurma.liderSelecionado, attTurma.viceliderSelecionado, attTurma.regenteSelecionado, turno)">
+            Atualizar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

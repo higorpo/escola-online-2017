@@ -1,0 +1,27 @@
+<div id="auth-login" layout="column" layout-align="center start">
+	<div id="login-wrapper">
+		<div class="header">
+			<a ui-sref="#"><div class="logo"></div></a>
+			<p>Caro usuário, faça o login para continuar!</p>
+		</div>
+		<div class="body" layout="column">
+			<md-input-container class="md-outline">
+				<label>Usuário</label>
+				<input type="text" ng-model="auth.user" required minlength="3" maxlength="15">
+			</md-input-container>		
+			<md-input-container class="md-outline">
+				<label>Senha</label>
+				<input type="password" ng-model="auth.pass" required>
+			</md-input-container>
+
+			<md-button class="md-raised md-primary">
+				Log In
+			</md-button>
+		</div>
+		<div class="extras">
+			<a><p>Esqueceu sua senha?</p></a>
+		</div>
+	</div>
+</div>
+
+

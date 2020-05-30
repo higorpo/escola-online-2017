@@ -1,0 +1,169 @@
+<div id="ano-letivo" class="modelo-pagina-lista modelo-aluno modelo-ano-letivo md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Ano letivo</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Ano letivo</h1>
+		<div>
+			<md-button 
+				ng-click="vm.botaoCriarAnoLetivo()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar ano letivo</span>
+				<md-tooltip hide-gt-xs>Cadastrar ano letivo</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<li 
+			ng-repeat="(key, value) in [0,1,2]">
+			
+			<div layout="row" layout-align="start center">
+
+				<div 
+					layout="column"
+					class="informacoes table">
+					
+					<p class="m-0 text-bold table-title">Ano</p>
+					<p class="ano-letivo m-0 pr-10">2018</p>
+				</div>
+
+
+				<div 
+					layout="column"
+					class="text-truncate table mr-50">
+					
+					<p class="m-0 text-bold table-title">Duração</p>
+					<p class="dias-ano-letivo m-0 text-truncate">100 dias</p>
+				</div>
+				<div 
+					layout="row"
+					class="acao-ano-letivo">
+					
+
+					<md-button 
+						ng-hide="exibirDetalhesCurso"
+						ng-click="vm.botaoEditar(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar ano letivo</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesCurso"
+						ng-click="vm.botaoExcluir(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir ano letivo</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+
+	<div id="menu-superior" class="mt-20" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Semestres</h1>
+		<div>
+			<md-button 
+				ng-click="vm.botaoCriarSemestre()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar semestre</span>
+				<md-tooltip hide-gt-xs>Cadastrar semestre</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista" class="lista-semestres">
+		<li 
+			ng-repeat="(key, value) in [0,1,2]">
+			
+			<div layout="row" layout-align="start start">
+
+				<div 
+					layout="column"
+					class="informacoes table {{exibirDetalhesSemestre ? 'hide' : ''}}">
+					
+					<p class="m-0 text-bold table-title">Ano letivo</p>
+					<p class="ano-letivo m-0 pr-10">2018</p>
+				</div>
+
+
+				<div 
+					layout="column"
+					class="table {{exibirDetalhesSemestre ? 'hide' : ''}}">
+					
+					<p class="m-0 text-bold table-title">Nome</p>
+					<p class="nome-semestre m-0 pr-10">1º trimestre</p>
+				</div>
+
+				<div 
+					layout="row" 
+					class=" detalhes {{exibirDetalhesSemestre ? 'show' : ''}}"
+					style="width: calc(100% - 40%)">
+
+					<div 
+						layout="column"
+						class="text-truncate table"
+						style="width: calc(100% / 2) !important; max-width: calc(100% / 2) !important">
+						
+						<p class="m-0 text-bold table-title">Data inicio</p>
+						<p class="dia-inicial-ano-letivo m-0 text-truncate">07/02/2018</p>
+					</div>
+
+					<div 
+						layout="column"
+						class="text-truncate table"
+						style="width: calc(100% / 2) !important; max-width: calc(100% / 2) !important">
+						
+						<p class="m-0 text-bold table-title">Data final</p>
+						<p class="dia-final-trimestre-ano-letivo m-0 text-truncate">07/04/2018</p>
+					</div>
+				</div>
+
+				<div 
+					layout="row"
+					class="acao-pessoa acao-semestre-ano-letivo">
+					
+					<md-button 
+						id="exibir-detalhes"
+						ng-click="exibirDetalhesSemestre = !exibirDetalhesSemestre"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">{{exibirDetalhesSemestre ? 'close' : 'library_books'}}</md-icon>
+						<md-tooltip>{{exibirDetalhesSemestre ? 'Fechar' : 'Exibir'}} detalhes do semestre</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesSemestre"
+						ng-click="vm.botaoEditarSemestre(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar semestre</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesSemestre"
+						ng-click="vm.botaoExcluirSemestre(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir semestre</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

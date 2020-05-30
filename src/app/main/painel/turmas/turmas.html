@@ -1,0 +1,105 @@
+<div id="turmas" class="modelo-pagina-lista modelo-aluno modelo-disciplinas modelo-turmas md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Turmas</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Turmas</h1>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="vm.botaoCriarTurma()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar turma</span>
+				<md-tooltip hide-gt-xs>Cadastrar turma</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<li 
+			ng-repeat="(key, value) in [0,1,2,3,4,5,6,7,8,9,10]">
+			
+			<div layout="row" layout-align="start start">
+
+				<div 
+					layout="column"
+					class="informacoes table {{exibirDetalhesTurma ? 'hide' : ''}}">
+					
+					<p class="m-0 text-bold table-title">Turma (nome)</p>
+					<p class="turma-nome m-0 pr-10">2° ano B - Ensino médio</p>
+				</div>
+
+				<div 
+					layout="row" 
+					class=" detalhes {{exibirDetalhesTurma ? 'show' : ''}}"
+					style="width: calc(100% - 40%);">
+
+					<div 
+						layout="column"
+						class="table"
+						style="max-width: calc(100% / 3);width: calc(100% / 3);">
+						
+						<p class="m-0 text-bold table-title">Curso</p>
+						<p class="curso-nome m-0">Técnico em Informática integrado ao ensino médio</p>
+					</div>
+
+					<div
+						layout="column"
+						class="ml-60 table">
+						<p class="m-0 text-bold table-title">
+							Ano letivo
+						</p>	
+						<p class="m-0">
+							2018
+						</p>	
+					</div>
+				</div>
+				<div 
+					layout="row"
+					class="acao-pessoa">
+					
+					<md-button 
+						id="exibir-detalhes"
+						ng-click="exibirDetalhesTurma = !exibirDetalhesTurma"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">{{exibirDetalhesTurma ? 'close' : 'library_books'}}</md-icon>
+						<md-tooltip>{{exibirDetalhesTurma ? 'Fechar' : 'Exibir'}} detalhes da turma</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesTurma"
+						ng-click="vm.botaoEditar(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar turma</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesTurma"
+						ng-click="vm.botaoExcluir(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir turma</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,86 @@
+<div id="dashboard-inicio" class="md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Página inicial</li>
+	</ul>
+
+	<ul hide-xs	rn-carousel-auto-slide="10" rn-carousel-controls-allow-loop="true" rn-carousel class="banner-images">
+		<li ng-repeat="(id, image) in vm.bannerImages">
+			<div class="layer" ng-style="{'background-position-y' : '{{image.positionY}}', 'background-image': 'url(\'{{image.url}}\')'}"></div>
+	  	</li>
+	</ul>
+
+	<div id="estatisticas" layout="column" >
+		<h1 class="title">
+			Estatísticas
+		</h1>
+
+		<div layout="row" layout-xs="column">
+	        <ms-widget class="h-150" layout="column" flex="100" flex-gt-xs="50"
+	                   flex-gt-md="33">
+
+	            <!-- Front -->
+	            <ms-widget-front class="p-16 deep-orange-bg white-fg" layout="row" flex>
+	                <div layout="column" layout-align="center center" flex>
+	                    <div class="md-display-3 pb-8">
+	                    	<span>{{53 | currency:'':0}}</span>
+	                    </div>
+	                    <div class="h3 font-weight-500">Alunos</div>
+	                </div>
+
+	                <div class="background-image-center">
+	                    <md-icon md-svg-icon="svg:study" class="s150 faint-text"></md-icon>
+	                </div>
+	            </ms-widget-front>
+	            <!-- / Front -->
+
+	        </ms-widget>
+
+	    	<ms-widget class="h-150" layout="column" flex="100" flex-gt-xs="50"
+	                   flex-gt-md="33">
+
+	            <!-- Front -->
+	            <ms-widget-front class="p-16 orange-bg white-fg" layout="row" flex>
+	                <div layout="column" layout-align="center center" flex>
+	                    <div class="md-display-3 pb-8">
+	                    	<span>{{12 | currency:'':0}}</span>
+	                    </div>
+	                    <div class="h3 font-weight-500">Professores</div>
+	                </div>
+
+	                <div class="background-image-center">
+	                    <md-icon md-svg-icon="svg:presentation" class="s150 faint-text"></md-icon>
+	                </div>
+	            </ms-widget-front>
+	            <!-- / Front -->
+
+	        </ms-widget>
+
+			<ms-widget class="h-150" layout="column" flex="100" flex-gt-xs="50"
+	                   flex-gt-md="33">
+
+	            <!-- Front -->
+	            <ms-widget-front class="p-16 teal-bg white-fg" layout="row" flex>
+	                <div layout="column" layout-align="center center" flex>
+	                    <div class="md-display-3 pb-8">
+	                    	<span>{{10 | currency:'':0}}</span>
+	                    </div>
+	                    <div class="h3 font-weight-500">Disciplinas</div>
+	                </div>
+
+	                <div class="background-image-center">
+	                    <md-icon md-svg-icon="svg:ebook" class="s150 faint-text"></md-icon>
+	                </div>
+	            </ms-widget-front>
+	            <!-- / Front -->
+
+	        </ms-widget>
+		</div>
+
+	</div>
+
+
+</div>

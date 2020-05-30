@@ -1,0 +1,7 @@
+{
+	"status": 200,
+	"professores": [
+		{"id": 0, "nome": "Sandra Vieira"},
+		{"id": 1, "nome": "Sandra Goulart"}
+	]
+}

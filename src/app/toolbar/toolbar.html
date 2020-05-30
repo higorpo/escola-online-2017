@@ -1,0 +1,105 @@
+<md-progress-linear id="toolbar-progress" ng-if="$root.loadingProgress" ng-disabled="!$root.loadingProgress" class="md-accent" md-mode="indeterminate"></md-progress-linear>
+<div layout="row" layout-align="start center">
+    <div style="width: 50%;" layout="row" layout-align="start center">
+        <md-button id="navigation-toggle" class="md-icon-button" ng-click="vm.toggleSidenav('navigation')"
+                   hide-gt-sm aria-label="Toggle navigation" translate
+                   translate-attr-aria-label="TOOLBAR.TOGGLE_NAVIGATION">
+            <md-icon md-font-set="icon" md-font-icon="icon-menu" class="icon"></md-icon>
+        </md-button>
+
+        <!-- Logo -->
+        <div id="logo" aria-label="Escola Online" hide-gt-sm>
+            <md-tooltip>Escola Online</md-tooltip>
+        </div>
+
+        <!-- Nome da escola -->
+        <md-icon 
+            class="school-name" 
+            style="margin: 0px; margin-left: 15px; color: #575757;" 
+            md-font-set="material-icons">
+            school
+        </md-icon>
+        <p 
+            class="school-name text-truncate" 
+            style="margin-left: 15px;margin-right: 15px;font-weight: 300;font-size: 15px;cursor: pointer;">
+            Instituto Federal Catarinense
+        </p>
+    </div>
+
+
+    <div style="width: 100%;" layout="row" layout-align="start center">
+        <span flex></span>
+
+        <div id="search" ng-class="showSearch ? 'showInput' : ''" layout="row" layout-align="start center">
+            <md-icon ng-click="showSearch = true" md-font-set="material-icons">search</md-icon>
+            <input type="text" placeholder="Pesquise..">
+            <md-icon 
+                class="closeInput" 
+                ng-click="showSearch = false" 
+                ng-show="showSearch"
+                md-font-set="material-icons">close</md-icon>
+        </div>
+
+        <div id="notifications" layout="row">
+            <md-menu-bar id="user-notification">
+                <md-button class="md-icon-button">
+                    <md-icon md-font-set="material-icons">notifications_none</md-icon>
+                </md-button>
+
+                <div ng-show="false" class="has_notification">
+                    <p>Novo</p>
+                </div>
+            </md-menu-bar>
+
+            <md-menu-bar id="messages-notification">
+                <md-button class="md-icon-button">
+                    <md-icon md-font-set="icon" md-font-icon="icon-message-text-outline"></md-icon>
+                </md-button>
+
+                <div ng-show="false" class="has_notification">
+                    <p>Novo</p>
+                </div>
+            </md-menu-bar>
+        </div>
+
+        <div class="toolbar-separator"></div>
+
+        <md-menu-bar id="user-menu">
+            <md-menu md-position-mode="left bottom">
+                <md-button class="user-button" ng-click="$mdOpenMenu()"
+                           aria-label="User settings"
+                           translate translate-attr-aria-label="TOOLBAR.USER_SETTINGS">
+                    <div layout="row" layout-align="space-between center">
+                        <div class="avatar-wrapper">
+                            <img md-menu-align-target class="avatar" src="assets/images/avatars/profile.jpg">
+                        </div>
+                        <div layout="column">
+                            <span class="username" hide show-gt-sm>Higor Oliveira</span>
+                            <span class="category" hide show-gt-sm>Diretor</span>
+                        </div>
+                        <md-icon md-font-set="icon" md-font-icon="icon-chevron-down"
+                                 class="icon s16" hide-xs></md-icon>
+                    </div>
+                </md-button>
+
+                <md-menu-content width="3">
+                    <md-menu-item class="md-indent">
+                        <md-icon md-font-set="material-icons">account_circle</md-icon>
+                        <md-button>Meu perfil</md-button>
+                    </md-menu-item>
+
+                    <md-menu-divider></md-menu-divider>
+
+                    <md-menu-item class="md-indent">
+                        <md-icon md-font-set="material-icons">exit_to_app</md-icon>
+                        <md-button ng-click="vm.logout()">Logout</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </md-menu-bar>
+
+
+        <!-- <ms-search-bar on-search="vm.search(query)" on-result-click="vm.searchResultClick(item)" debounce="300"></ms-search-bar> -->
+
+    </div>
+</div>

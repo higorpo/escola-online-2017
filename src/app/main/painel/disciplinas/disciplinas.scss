@@ -1,0 +1,13 @@
+@media screen and (max-width: 640px) {
+	.modelo-pagina-lista.modelo-aluno.modelo-disciplinas {
+		ul#lista {
+			li {
+				.detalhes {
+					&.show {
+					    margin-left: -30px;
+					}
+				}
+			}
+		}
+	}
+}

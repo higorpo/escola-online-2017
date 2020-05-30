@@ -1,0 +1,71 @@
+<md-dialog id="cadastrarCursoTurmaDialog" aria-label="Cadastrar curso">
+    <form name="cadastrarTurmaForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Cadastrar turma no curso</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cadTurma.cancel()">
+                    <md-icon md-font-set="material-icons" aria-label="Fechar">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <md-input-container title="Nome da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Nome da turma</label>
+                <input type="text" placeholder="" ng-model="nome" required>
+            </md-input-container>
+            <md-input-container title="Ano letivo." md-no-float="label" class="md-block">
+                <label class="primary-fg">Ano letivo</label>
+                <md-select ng-model="ano_letivo" ng-init="ano_letivo = null" required>
+                    <md-option ng-value="null"><em>Selecionar...</em></md-option>                
+                    <md-option ng-repeat="(key, value) in cadTurma.anosLetivos" ng-value="{{value.id}}">{{value.ano}}</md-option>                
+                </md-select>
+            </md-input-container>
+            <md-input-container title="Turno do curso." md-no-float="label" class="md-block" style="margin-top: calc(18px * 2);">
+                <label class="primary-fg">Turno</label>
+                <md-select ng-model="turno" ng-init="turno = null" required>
+                    <md-option ng-value="null"><em>Selecionar...</em></md-option>                
+                    <md-option ng-value="0">Manhã</md-option>                
+                    <md-option ng-value="1">Tarde</md-option>                
+                    <md-option ng-value="2">Noite</md-option>                
+                    <md-option ng-value="3">Integral</md-option>                
+                </md-select>
+            </md-input-container>
+            <md-autocomplete class="md-block" md-no-float="label"
+                title="Regente da turma."
+                md-input-name="autocompleteRegente"
+                md-input-minlength="2"
+                md-no-cache="false"
+                md-selected-item="cadTurma.regenteSelecionado"
+                md-search-text="cadTurma.searchRegente"
+                md-items="regente in cadTurma.queryProfessoresSearch(cadTurma.searchRegente)"
+                md-item-text="regente.nome_completo"
+                md-require-match
+                md-floating-label="Regente da turma">
+                <md-item-template>
+                    <div layout="row" layout-align="start center">
+                        <div class="foto-pessoa" style="width: 30px; height: 30px;margin-right: 10px;">
+                            <img class="avatar" src="assets/images/avatars/profile.jpg" style="min-width: 30px;min-height: 30px;width: 30px;height: 30px;"">
+                        </div>
+                        <span md-highlight-text="cadTurma.searchLider">{{regente.nome_completo}}</span>
+                    </div>
+                </md-item-template>
+                <div ng-messages="cadastrarTurmaForm.autocompleteRegente.$error" ng-if="cadastrarTurmaForm.autocompleteRegente.$touched">
+                    <div ng-message="md-require-match">Por favor, selecione um professor existente.</div>
+                    <div ng-message="minlength">Nome do professor é muito curto!</div>
+                </div>
+            </md-autocomplete>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cadTurma.cancel()">
+                Cancelar
+            </md-button>
+            <md-button type="submit" ng-click="cadTurma.cadastrarTurma(nome, ano_letivo, turno, cadTurma.regenteSelecionado)">
+                Cadastrar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

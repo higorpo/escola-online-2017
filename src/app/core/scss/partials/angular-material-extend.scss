@@ -1,0 +1,610 @@
+/*----------------------------------------------------------------*/
+/*  Angular Material Extend
+/*  Adds and/or modifies Angular Material styles
+/*----------------------------------------------------------------*/
+
+/* --- FIXES --- */
+
+// IE layout-fill fix
+[layout] {
+
+    > * {
+        min-height: auto;
+        min-height: initial;
+    }
+}
+
+// IE card img auto height Fix
+md-card > img,
+md-card > :not(md-card-content) img {
+    height: inherit;
+    height: initial;
+}
+
+// Date picker box-sizing Fix
+.md-datepicker-calendar-pane {
+
+    * {
+        box-sizing: initial;
+    }
+}
+
+/* --- MODIFICATIONS --- */
+
+// Autocomplete
+md-autocomplete-wrap {
+
+    > input[type="search"] {
+        background: #FFFFFF;
+        padding: 0 15px !important;
+    }
+}
+
+// Backdrop
+md-backdrop {
+
+    &.md-opaque {
+        background-color: rgba(33, 33, 33, 0.48) !important;
+    }
+}
+
+// Card
+md-card {
+
+    md-card-header {
+
+        md-card-avatar {
+
+            md-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+}
+
+// Checkbox
+md-checkbox {
+
+    &.no-label {
+        margin: 0;
+    }
+}
+
+// Chip
+md-chip {
+
+    .md-chip-remove {
+
+        md-icon {
+            margin-left: 2px;
+
+            svg {
+                width: 18px;
+                height: 18px;
+                max-width: 18px;
+                max-height: 18px;
+                margin: 4px;
+            }
+        }
+    }
+}
+
+// Datepicker
+md-datepicker {
+
+    .md-datepicker-button {
+        padding: 0 !important;
+        margin: 0 !important;
+        vertical-align: middle;
+    }
+
+    .md-datepicker-input-container {
+        margin-left: 0;
+    }
+}
+
+.md-inline-form {
+
+    md-datepicker {
+        margin-top: 14px;
+    }
+}
+
+// Dialog
+md-dialog {
+
+    md-dialog-content {
+        padding: 32px 24px 24px 24px;
+    }
+
+    md-dialog-actions {
+        min-height: 64px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+
+        .md-button {
+            margin: 0 8px;
+        }
+    }
+}
+
+// Input
+md-input-container {
+
+    &.no-errors-spacer {
+
+        .md-errors-spacer {
+            display: none;
+        }
+    }
+
+    .input-hint {
+        position: absolute;
+        right: auto;
+        bottom: 7px;
+        left: 2px;
+        font-size: 12px;
+        line-height: 14px;
+        transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+        color: rgba(0, 0, 0, 0.54);
+    }
+
+    &.md-icon-left {
+
+        .input-hint {
+            left: 38px;
+        }
+    }
+}
+
+// Lists
+md-list-item {
+
+    .md-list-item-text {
+
+        p {
+            font-size: 13px !important;
+        }
+    }
+}
+
+// Menu
+md-menu,
+.md-menu {
+    padding: 0;
+}
+
+// Menubar
+md-menu-content {
+
+    &.md-menu-bar-menu {
+
+        &.md-dense {
+            padding: 8px 0;
+
+            .md-button,
+            md-menu-item {
+                height: 40px;
+                line-height: 40px;
+
+                &.md-indent {
+
+                    > md-icon {
+                        top: 8px;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+.md-open-menu-container {
+
+    md-menu-content {
+
+        md-menu-item {
+
+            &.selected {
+                opacity: 0.4;
+            }
+        }
+    }
+}
+
+// IE fix
+md-menu-content {
+
+    md-menu-item {
+
+        .md-button {
+            text-align: left;
+        }
+    }
+}
+
+// Select
+md-select {
+
+    &.simplified {
+        margin: 0 8px;
+
+        .md-select-value {
+            border: none !important;
+            box-sizing: border-box;
+            padding: 0;
+
+            & *:first-child {
+                transform: none;
+                height: auto;
+            }
+
+            .md-select-icon {
+                transform: none;
+                font-size: 16px;
+
+                &:after {
+                    top: 1px;
+                }
+            }
+        }
+    }
+
+    &[multiple] {
+
+        md-select-value {
+
+            & > *:first-child {
+                display: flex;
+
+                & > *:first-child {
+                    flex: 0;
+                }
+
+                .md-container {
+                    padding-right: 6px;
+
+                    &:first-of-type {
+                        padding-right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Select element contents
+md-select-menu {
+
+    md-select-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: auto;
+        height: 48px;
+        padding-left: 10.667px;
+        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+
+        input[type="search"] {
+            border: none;
+            outline: none;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+        }
+    }
+}
+
+// Sidenav
+md-sidenav {
+    -webkit-overflow-scrolling: touch;
+}
+
+// Toolbar
+md-toolbar {
+
+    // Colored toolbar element compatibility
+    &.colored-toolbar {
+        color: rgba(255, 255, 255, 0.87);
+
+        md-menu-bar {
+
+            md-menu {
+
+                &._md-open {
+
+                    > button {
+                        background: rgba(0, 0, 0, 0.12);
+                    }
+                }
+            }
+        }
+
+        md-menu {
+
+            &._md-open {
+
+                > button {
+                    background: rgba(0, 0, 0, 0.12);
+                }
+            }
+        }
+
+        input {
+            color: rgba(255, 255, 255, 0.87) !important;
+        }
+    }
+}
+
+md-progress-circular[disabled]{
+    visibility: hidden;
+}
+
+.md-button {
+    border-radius: 3px;
+    &.md-outline {
+        border-style: solid;
+        border-width: 1px;
+    }
+    &.md-raised, &.md-outline {
+        padding: 0 20px;
+    }
+    &.md-raised.md-rounded, &.md-outline.md-rounded {
+        border-radius: 60px;
+    }
+    &.md-large {
+        font-size: 1.6rem;
+        padding: 1.55rem 3.5rem;
+    }
+}
+
+md-autocomplete.md-outline {
+    & > md-autocomplete-wrap { 
+
+        > md-input-container {
+            .md-input {
+                border-width: 1px;
+                border-radius: 8px;
+                padding: 40px 17px 20px 17px;
+
+                &.ng-invalid.ng-dirty {
+                    padding-bottom: 20px;
+                    border-width: 1px;
+                }
+            }
+            label {
+                -webkit-transform: translate3d(18px, 45px, 0) scale(1) !important;
+                transform: translate3d(18px, 45px, 0) scale(1) !important;
+            }
+
+            &.md-input-focused,&.md-input-has-value {
+                label:not(.md-no-float) {
+                    -webkit-transform: translate3d(18px, 35px, 0) scale(0.75) !important;
+                    transform: translate3d(18px, 35px, 0) scale(0.75) !important;
+                }
+            }
+        }
+
+        > md-progress-circular {
+            position: absolute;
+            right: 23px;
+            top: 23px;
+            background-color: white;
+            height: 30px !important;
+            width: 50px !important;
+
+            > svg {
+                margin-left: 29px;
+            }
+        }
+    }
+}
+
+md-input-container {
+    &.md-outline  {
+        .md-input {
+            border-width: 1px;
+            border-radius: 8px;
+            padding: 40px 17px 20px 17px;
+
+            &.ng-invalid.ng-dirty {
+                padding-bottom: 20px;
+                border-width: 1px;
+            }
+        }
+        label {
+            -webkit-transform: translate3d(18px, 45px, 0) scale(1) !important;
+            transform: translate3d(18px, 45px, 0) scale(1) !important;
+        }
+    }
+    &.md-input-focused,&.md-input-has-value {
+        &.md-outline > label:not(.md-no-float) {
+            -webkit-transform: translate3d(18px, 35px, 0) scale(0.75) !important;
+            transform: translate3d(18px, 35px, 0) scale(0.75) !important;
+        }
+    }
+    &[md-no-float="label"] {
+        label {
+            font-weight: bold;
+        }
+
+        input, textarea, md-select {
+            background-color: #efefef;
+            padding: 5px 13px;
+            height: 40px;
+            border-radius: 5px 5px 0px 0px;
+        }
+
+        md-select {
+            padding: 0px;
+
+            md-select-value {
+                padding-left: 13px;
+            }
+        }
+    }
+}
+
+md-autocomplete {
+    &[md-no-float="label"] {
+        md-autocomplete-wrap {
+            md-input-container {
+                label {
+                    font-weight: bold;
+                    transform: translate3d(0, 6px, 0) scale(0.75) !important;
+                    transition: transform cubic-bezier(0.25, 0.8, 0.25, 1) 0.4s, width cubic-bezier(0.25, 0.8, 0.25, 1) 0.4s !important;
+                }
+
+                input, textarea, md-select {
+                    background-color: #efefef;
+                    padding: 5px 13px;
+                    height: 40px;
+                    border-radius: 5px 5px 0px 0px;
+                }
+            }
+        }
+    }
+}
+
+md-input-container._md-datepicker-floating-label._md-datepicker-has-calendar-icon {
+    &.md-outline {
+        min-width: 180px;
+
+        > label {
+            right: 60px !important;
+        }
+
+        > md-datepicker {
+            .md-datepicker-button {
+                position: absolute;
+                top: 14px;
+                left: 5px;
+            }   
+            .md-datepicker-input-container {
+                margin-left: 0px;
+                width: 100%;
+
+                > input {
+                    padding-left: 42px;
+                    padding-right: 22px;
+                }
+
+                > .md-datepicker-triangle-button {
+                    top: 13px;
+                    right: 9px;
+                }
+            }
+        }
+    }
+    &.md-outline.md-input-invalid {
+     > md-datepicker {
+            .md-datepicker-button {
+                > md-icon {
+                    color: #d50000;
+                }
+            }   
+        }   
+    }
+}
+
+
+// clickabe
+.clickabe:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #1b5dd6;
+}
+
+
+// tooltip
+.customer-tooltip {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+    background-color: white !important;
+    box-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+    
+
+    .cover-profile {
+        text-align: center;
+        margin-top: 20px;
+
+        img {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            min-height: 60px;
+        }
+    }
+
+    .info {
+        color: black;
+        .user-name {
+            text-align: center;
+            margin: 0px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+        .description {
+            text-align: center;
+            margin: 0px;
+            margin-top: -5px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+    }
+}
+
+md-select.md-outline {
+    margin-top: 0px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px 0px;
+    padding-left: 16px;
+}   
+
+
+ul.breadcrumb {
+    list-style: none;
+    padding: 0;
+    margin-top: 0px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+
+    h1 {
+        margin: 0px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    li {
+        display: inline;
+        font-size: 12px;
+
+        &+li:before {
+            padding: 8px;
+            color: black;
+            content: "/\00a0";
+        }
+
+        a {
+            color: #0275d8;
+            text-decoration: none;
+
+            &:hover {
+                color: #01447e;
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 600px) {
+    ul.breadcrumb {
+        overflow: hidden;
+    }
+}

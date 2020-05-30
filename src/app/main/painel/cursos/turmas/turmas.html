@@ -1,0 +1,98 @@
+<div id="curso-turmas" class="modelo-pagina-lista modelo-aluno modelo-disciplinas modelo-turmas md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li><a ui-sref="app.painel.cursos">Cursos</a></li>
+		<li>Curso</li>
+		<li>Turmas</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center" class="mt-20">
+		<div>
+			<h1 class="md-display-1 m-0">Turmas</h1>
+			<p class="m-0 grey-fg"><b>Curso:</b> {{CursoData.nome}}</p>
+		</div>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input ng-model="barraPesquisa" type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="cursoTurmas.botaoCriarTurma($event)"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">playlist_add</md-icon>
+				<span class="ml-10">Cadastrar turma</span>
+				<md-tooltip hide-gt-xs>Cadastrar turma</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<div id="sem-resultados" ng-if="TurmasData.length == 0">
+			<p>Não existem turmas cadastradas no momento.</p>
+			<p ng-click="cursoTurmas.botaoCriarTurma()">Cadastre uma para ver aqui!</p>
+		</div>
+		<li 
+			ng-repeat="(key, value) in TurmasData | filter: {nome: barraPesquisa}">
+			
+			<div layout="row" layout-align="start center">
+
+				<div layout="row" ng-click="cursoTurmas.visualizarTurma($event, key, value.id)" style="width: 100%;">
+					<div 
+						layout="column"
+						class="informacoes table">
+						
+						<p class="m-0 text-bold table-title">Turma (nome)</p>
+						<p class="turma-nome m-0 pr-10">{{value.nome}}</p>
+					</div>
+
+					<div 
+						layout="row" 
+						class=" detalhes"
+						style="width: calc(100% - 40%);">
+
+						<div
+							layout="column"
+							class="ml-60 table">
+							<p class="m-0 text-bold table-title">
+								Ano letivo
+							</p>	
+							<p class="m-0">
+								{{value.ano_letivo}}
+							</p>	
+						</div>
+					</div>
+				</div>
+				<div 
+					layout="row"
+					class="acao-pessoa">
+
+					<md-button 
+						ng-hide="exibirDetalhesTurma"
+						ng-click="cursoTurmas.botaoEditar($event, key, value.id)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar turma</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesTurma"
+						ng-click="cursoTurmas.botaoExcluir($event, key, value.id)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir turma</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

@@ -1,0 +1,98 @@
+<div id="lista-professores" class="modelo-pagina-lista modelo-aluno md-padding" layout="column" layout-align="center start">
+
+	<ul class="breadcrumb">
+		<h1>Caminho</h1>
+		<li><a ui-sref="app.painel.pagina-inicial">Escola Online</a></li>
+		<li>Painel</li>
+		<li>Professores</li>
+	</ul>
+
+
+	<div id="menu-superior" layout="row" layout-align="space-between center">
+		<h1 class="md-display-1">Professores</h1>
+		<div>
+			<md-input-container class="m-0 h-30">
+
+				<md-icon md-font-set="material-icons">search</md-icon>
+				<label>Pesquisar</label>
+				<input type="text">
+
+			</md-input-container>
+			<md-button 
+				ng-click="vm.botaoCriarProfessor()"
+				class="md-raised md-outline md-accent">
+
+				<md-icon md-font-set="material-icons">person_add</md-icon>
+				<span class="ml-10">Cadastrar professor</span>
+				<md-tooltip hide-gt-xs>Cadastrar professor</md-tooltip>
+			</md-button>
+		</div>
+	</div>
+
+	<ul id="lista">
+		<li 
+			ng-repeat="(key, value) in [0,1,2,3,4,5,6,7,8,9,10]">
+			
+			<div layout="row">
+			
+				<div class="foto-pessoa">
+					<img class="avatar" src="assets/images/avatars/carl.jpg">
+				</div>
+
+				<div 
+					layout="column"
+					class="informacoes-pessoa text-truncate"
+					style="max-width: calc(100% / 3);width: calc(100% / 3);">
+					
+					<p class="nome-pessoa m-0 ml-10 text-bold">Lucas Garcia</p>
+					<p class="m-0 ml-10 text-truncate">lucasgarcia@gmail.com</p>
+				</div>
+
+				<div
+					layout="column"
+					class="ml-40 detalhes {{exibirDetalhesProfessor ? 'show' : ''}}">
+					<p class="m-0">
+						<b>Telefone: </b>
+						(48) 99682-3368
+					</p>	
+					<p class="m-0">
+						<b>Cidade: </b>
+						Sombrio
+					</p>
+				</div>
+
+				<div 
+					layout="row"
+					class="acao-pessoa acao-professor">
+					
+					<md-button 
+						id="exibir-detalhes"
+						ng-click="exibirDetalhesProfessor = !exibirDetalhesProfessor"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">{{exibirDetalhesProfessor ? 'close' : 'library_books'}}</md-icon>
+						<md-tooltip>{{exibirDetalhesProfessor ? 'Fechar' : 'Exibir'}} detalhes do professor</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesProfessor"
+						ng-click="vm.botaoEditar(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">edit</md-icon>
+						<md-tooltip>Editar pessoa</md-tooltip>
+					</md-button>
+
+					<md-button 
+						ng-hide="exibirDetalhesProfessor"
+						ng-click="vm.botaoExcluir(key, 1)"
+						class="md-icon-button">
+
+						<md-icon md-font-set="material-icons">delete</md-icon>
+						<md-tooltip>Excluir pessoa</md-tooltip>
+					</md-button>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>

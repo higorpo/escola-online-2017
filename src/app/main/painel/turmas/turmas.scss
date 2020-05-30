@@ -1,0 +1,20 @@
+@media screen and (max-width: 640px) {
+	.modelo-pagina-lista.modelo-aluno.modelo-turmas {
+		ul#lista {
+			li {
+				.informacoes {
+					&.hide{
+						display: none;
+					}
+				}
+				.detalhes {
+
+					&.show {
+					    position: relative;
+					    margin-left: 0px;
+					}
+				}
+			}
+		}
+	}
+}

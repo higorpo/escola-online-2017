@@ -1,0 +1,58 @@
+<md-dialog id="visaulizarCursoTurmaDialog" aria-label="Atualizar curso">
+    <form name="visualizarTurmaForm" ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Visualizar turma</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="attTurma.cancel()">
+                    <md-icon md-font-set="material-icons" aria-label="Fechar">close</md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <md-input-container title="Nome da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Nome da turma</label>
+                <input type="text" placeholder="" ng-model="nome" ng-init="nome = TurmaData.nome" disabled>
+            </md-input-container>
+
+            <md-input-container title="Ano letivo." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Ano letivo</label>
+                <input type="text" placeholder="" ng-model="ano_letivo" ng-init="ano_letivo = TurmaData.ano_letivo.ano" disabled>
+            </md-input-container>
+
+            <md-input-container title="Turno do curso." md-no-float="label" class="md-block" style="margin-bottom: 40px;">
+                <label class="primary-fg">Turno</label>
+                <md-select ng-model="turno" ng-init="turno = TurmaData.turno" disabled>
+                    <md-option ng-value="null"><em>Selecionar...</em></md-option>                
+                    <md-option ng-value="0">Manhã</md-option>                
+                    <md-option ng-value="1">Tarde</md-option>                
+                    <md-option ng-value="2">Noite</md-option>                
+                    <md-option ng-value="3">Integral</md-option>                
+                </md-select>
+            </md-input-container>
+
+            <md-input-container title="Líder da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Líder da turma</label>
+                <input type="text" placeholder="" ng-model="lider" ng-init="lider = TurmaData.lider.nome_completo" disabled>
+            </md-input-container>
+
+            <md-input-container title="Vide-líder da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Vide-líder da turma</label>
+                <input type="text" placeholder="" ng-model="vice_lider" ng-init="vice_lider = TurmaData.vice_lider.nome_completo" disabled>
+            </md-input-container>
+
+            <md-input-container title="Regente da turma." md-select-on-focus md-no-float="label" class="md-block">
+                <label class="primary-fg">Regente da turma</label>
+                <input type="text" placeholder="" ng-model="regente" ng-init="regente = TurmaData.regente.nome_completo" disabled>
+            </md-input-container>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="attTurma.cancel()">
+                Cancelar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>
